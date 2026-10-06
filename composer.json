@@ -1,7 +1,16 @@
 {
-  "name": "abapay/abapay",
+  "name": "crushjs/aba-payway",
   "type": "library",
-  "description": "Pay as You Wish in Cambodia",
+  "description": "Pay as You Wish in Cambodia - ABA PayWay payment gateway client for PHP and Laravel",
+  "keywords": [
+    "aba",
+    "payway",
+    "khqr",
+    "payment",
+    "cambodia",
+    "laravel"
+  ],
+  "homepage": "https://github.com/crushjs/aba-payway",
   "license": "MIT",
   "authors": [
     {
@@ -10,11 +19,38 @@
     }
   ],
   "require": {
-    "php": ">=8.0"
+    "php": ">=8.0",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "illuminate/support": "^10.0|^11.0|^12.0|^13.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
+    "phpunit/phpunit": "^10.5|^11.0|^12.0"
   },
   "autoload": {
     "psr-4": {
-      "ABAPay\\": "src/"
+      "Crushjs\\AbaPayway\\": "src/"
     }
-  }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Crushjs\\AbaPayway\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Crushjs\\AbaPayway\\Laravel\\PayWayServiceProvider"
+      ],
+      "aliases": {
+        "PayWay": "Crushjs\\AbaPayway\\Laravel\\Facades\\PayWay"
+      }
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
